@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "MadWorld.AzureFunctions.Admin.API": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7178",
+      "launchBrowser": false
+    }
+  }
+}
