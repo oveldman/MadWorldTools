@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MadWorld.Blazor.Admin.Domain\MadWorld.Blazor.Admin.Domain.csproj" />
+      <ProjectReference Include="..\MadWorld.Blazor.Admin.Infrastructure\MadWorld.Blazor.Admin.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>

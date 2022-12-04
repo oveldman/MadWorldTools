@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MadWorld.AzureFunctions.Tools.Domain\MadWorld.AzureFunctions.Tools.Domain.csproj" />
+      <ProjectReference Include="..\MadWorld.AzureFunctions.Tools.Infrastructure\MadWorld.AzureFunctions.Tools.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>

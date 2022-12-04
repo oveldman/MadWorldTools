@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MadWorld.Backend.Shared.Domain\MadWorld.Backend.Shared.Domain.csproj" />
+      <ProjectReference Include="..\MadWorld.Backend.Shared.Infrastructure\MadWorld.Backend.Shared.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>
