@@ -25,10 +25,10 @@ jobs:
         dotnet-version: 7.0.x
     - name: Restore dependencies
       run: dotnet restore
-      working-directory: $PROJECT_PATH
+      working-directory: ${{ env.PROJECT_PATH }}
     - name: Build
       run: dotnet build --no-restore
-      working-directory: $PROJECT_PATH
+      working-directory: ${{ env.PROJECT_PATH }}
     - name: Test
       run: dotnet test --no-build --verbosity normal
-      working-directory: $PROJECT_PATH
+      working-directory: ${{ env.PROJECT_PATH }}
