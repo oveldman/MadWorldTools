@@ -43,8 +43,8 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"oveldman_MadWorldTools" /o:"oveldman" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          cd MadWorld
-          dotnet workload restore
-          dotnet restore
-          dotnet build --no-restore
+          cd MadWorld;
+          dotnet workload restore;
+          dotnet restore;
+          dotnet build --no-restore;
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
