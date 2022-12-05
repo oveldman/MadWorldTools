@@ -23,6 +23,9 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 7.0.x
+    - name: Install dotnet workload
+      run: dotnet workload restore
+      working-directory: ${{ env.PROJECT_PATH }}
     - name: Restore dependencies
       run: dotnet restore
       working-directory: ${{ env.PROJECT_PATH }}
