@@ -94,6 +94,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.Tests.Unittests.Sh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.Shared.Domain", "MadWorld.Shared.Domain\MadWorld.Shared.Domain.csproj", "{13F8A25F-E18A-4F61-9E19-28862E052346}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Deployment", "_Deployment", "{BD841286-928A-47B5-B99D-B07294EE8A53}"
+	ProjectSection(SolutionItems) = preProject
+		MadWorld.Deployment\deploy-madworld.json = MadWorld.Deployment\deploy-madworld.json
+		MadWorld.Deployment\deploy-madworld.sh = MadWorld.Deployment\deploy-madworld.sh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
