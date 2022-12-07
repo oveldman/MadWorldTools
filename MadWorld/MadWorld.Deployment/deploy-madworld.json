@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2022-12-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "regionLocation": {
@@ -28,7 +28,7 @@
   "resources": [
     {
       "type": "Microsoft.Web/staticSites",
-      "apiVersion": "2022-12-01",
+      "apiVersion": "2019-08-01",
       "location": "[parameters('regionLocation')]",
       "sku": {
         "Tier": "[parameters('sku')]",
