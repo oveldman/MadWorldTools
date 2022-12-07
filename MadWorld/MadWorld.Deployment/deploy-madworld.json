@@ -29,7 +29,7 @@
     {
       "type": "Microsoft.Web/staticSites",
       "apiVersion": "2022-03-01",
-      "name": "WebApp.MadWorld.Tools",
+      "name": "WebApp-MadWorld-Tools",
       "location": "[parameters('regionLocation')]",
       "sku": {
         "Tier": "[parameters('sku')]",
