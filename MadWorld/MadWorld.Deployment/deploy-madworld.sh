@@ -1,7 +1,7 @@
 subscriptionName="Oscar"
 resourceGroupName="MadWorldTools"
 
-az account set --subscription subscriptionName
+az account set --subscription $subscriptionName
 az group create --name $resourceGroupName --location westeurope
 
 az deployment group create \
