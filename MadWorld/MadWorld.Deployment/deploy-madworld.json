@@ -28,12 +28,20 @@
   "resources": [
     {
       "type": "Microsoft.Web/staticSites",
-      "apiVersion": "2021-01-01",
+      "apiVersion": "2022-03-01",
       "name": "WebApp-MadWorld-Tools",
       "location": "[parameters('regionLocation')]",
       "sku": {
         "Tier": "[parameters('sku')]",
         "Name": "[parameters('skuCode')]"
+      },
+      "properties": {
+        "repositoryUrl": "https://github.com/oveldman/MadWorldTools",
+        "branch": "main",
+        "stagingEnvironmentPolicy": "Enabled",
+        "allowConfigFileUpdates": true,
+        "provider": "GitHub",
+        "enterpriseGradeCdnStatus": "Disabled"
       }
     }
   ],
