@@ -28,7 +28,7 @@
   "resources": [
     {
       "type": "Microsoft.Web/staticSites",
-      "apiVersion": "2022-03-01",
+      "apiVersion": "2021-01-01",
       "name": "WebApp-MadWorld-Tools",
       "location": "[parameters('regionLocation')]",
       "sku": {
