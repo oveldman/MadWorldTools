@@ -25,5 +25,6 @@
     <ItemGroup>
       <ProjectReference Include="..\MadWorld.AzureFunctions.Admin.Application\MadWorld.AzureFunctions.Admin.Application.csproj" />
       <ProjectReference Include="..\MadWorld.AzureFunctions.Admin.Domain\MadWorld.AzureFunctions.Admin.Domain.csproj" />
+      <ProjectReference Include="..\MadWorld.Backend.Shared.Application\MadWorld.Backend.Shared.Application.csproj" />
     </ItemGroup>
 </Project>
