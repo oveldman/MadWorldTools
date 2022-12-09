@@ -13,27 +13,36 @@
       "type": "string",
       "defaultValue": "Free",
       "metadata": {
-        "description": "Location for all resources."
+        "description": "Adjust sku level"
       }
     },
     "skuCode": {
       "type": "string",
       "defaultValue": "Free",
       "metadata": {
-        "description": "Location for all resources."
+        "description": "Adjust sku code level"
       }
     },
     "staticSites_admin_name": {
+      "type": "string",
       "defaultValue": "WebApp-MadWorld-Admin",
-      "type": "String"
+      "metadata": {
+        "description": "Name of the admin static site."
+      }
     },
     "staticSites_tools_name": {
+      "type": "string",
       "defaultValue": "WebApp-MadWorld-Tools",
-      "type": "String"
+      "metadata": {
+        "description": "Name of the tools static site."
+      }
     },
     "storageAccounts_madworldblobs_name": {
+      "type": "string",
       "defaultValue": "blobsmadworld",
-      "type": "String"
+      "metadata": {
+        "description": "Name of the storage account"
+      }
     }
   },
   "variables": {},
