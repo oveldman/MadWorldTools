@@ -22,6 +22,14 @@
       "metadata": {
         "description": "Location for all resources."
       }
+    },
+    "staticSites_admin_name": {
+      "defaultValue": "WebApp-MadWorld-Admin",
+      "type": "String"
+    },
+    "staticSites_tools_name": {
+      "defaultValue": "WebApp-MadWorld-Tools",
+      "type": "String"
     }
   },
   "variables": {},
@@ -29,7 +37,7 @@
     {
       "type": "Microsoft.Web/staticSites",
       "apiVersion": "2022-03-01",
-      "name": "WebApp-MadWorld-Tools",
+      "name": "[parameters('staticSites_tools_name')]",
       "location": "[parameters('regionLocation')]",
       "sku": {
         "Tier": "[parameters('sku')]",
@@ -43,6 +51,44 @@
         "provider": "GitHub",
         "enterpriseGradeCdnStatus": "Disabled"
       }
+    },
+    {
+      "type": "Microsoft.Web/staticSites/customDomains",
+      "apiVersion": "2022-03-01",
+      "name": "[concat(parameters('staticSites_tools_name'), '/www.mad-world.nl')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/staticSites', parameters('staticSites_tools_name'))]"
+      ],
+      "properties": {}
+    },
+    {
+      "type": "Microsoft.Web/staticSites",
+      "apiVersion": "2022-03-01",
+      "name": "[parameters('staticSites_admin_name')]",
+      "location": "[parameters('regionLocation')]",
+      "sku": {
+        "Tier": "[parameters('sku')]",
+        "Name": "[parameters('skuCode')]"
+      },
+      "properties": {
+        "repositoryUrl": "https://github.com/oveldman/MadWorldTools",
+        "branch": "main",
+        "stagingEnvironmentPolicy": "Enabled",
+        "allowConfigFileUpdates": true,
+        "provider": "GitHub",
+        "enterpriseGradeCdnStatus": "Disabled"
+      }
+    },
+    {
+      "type": "Microsoft.Web/staticSites/customDomains",
+      "apiVersion": "2022-03-01",
+      "name": "[concat(parameters('staticSites_admin_name'), '/admin.mad-world.nl')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/staticSites', parameters('staticSites_admin_name'))]"
+      ],
+      "properties": {}
     }
   ],
   "outputs": {}
