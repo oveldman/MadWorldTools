@@ -100,6 +100,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Documentation", "_Document
 	ProjectSection(SolutionItems) = preProject
 		..\README.md = ..\README.md
 		..\LICENSE = ..\LICENSE
+		..\.gitignore = ..\.gitignore
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{613B2E4F-F477-49E4-A5BF-750C9BBB002B}"
@@ -113,6 +114,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InfrastructureAsCode", "Inf
 		MadWorld.Deployment\deploy-madworld.json = MadWorld.Deployment\deploy-madworld.json
 		MadWorld.Deployment\deploy-madworld.sh = MadWorld.Deployment\deploy-madworld.sh
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{9BA031FB-EB44-460D-8A55-4F077C3A27B1}"
+	ProjectSection(SolutionItems) = preProject
+		..\Easy_Scripts\InstallTools.sh = ..\Easy_Scripts\InstallTools.sh
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternPackages", "ExternPackages", "{44F467A5-E3E9-40BD-A5AB-EC5B74C3312B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.Monaco", "MadWorld.Monaco\MadWorld.Monaco.csproj", "{A4746E8C-BF7B-4AE3-9851-AF86F64F4B31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -165,6 +175,8 @@ Global
 		{13F8A25F-E18A-4F61-9E19-28862E052346} = {C62330C8-B130-414F-ADA4-E66E5EA3DF35}
 		{613B2E4F-F477-49E4-A5BF-750C9BBB002B} = {BD841286-928A-47B5-B99D-B07294EE8A53}
 		{295CCBB7-5A47-45B9-A8A6-A4AE4CDED452} = {BD841286-928A-47B5-B99D-B07294EE8A53}
+		{9BA031FB-EB44-460D-8A55-4F077C3A27B1} = {FD68825E-10CF-4D88-BDDC-3867F79FB58B}
+		{A4746E8C-BF7B-4AE3-9851-AF86F64F4B31} = {44F467A5-E3E9-40BD-A5AB-EC5B74C3312B}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A02AF4D2-59A4-4855-ADFC-AA2ACBB48F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -303,5 +315,9 @@ Global
 		{13F8A25F-E18A-4F61-9E19-28862E052346}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13F8A25F-E18A-4F61-9E19-28862E052346}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13F8A25F-E18A-4F61-9E19-28862E052346}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4746E8C-BF7B-4AE3-9851-AF86F64F4B31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4746E8C-BF7B-4AE3-9851-AF86F64F4B31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4746E8C-BF7B-4AE3-9851-AF86F64F4B31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4746E8C-BF7B-4AE3-9851-AF86F64F4B31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
