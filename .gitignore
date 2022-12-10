@@ -350,4 +350,4 @@ MigrationBackup/
 .ionide/
 
 # MadWorld exlude folders
-wwwroot/lib/
+/MadWorld/MadWorld.Monaco/wwwroot/lib/**
