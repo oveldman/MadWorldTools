@@ -15,6 +15,7 @@
     <ItemGroup>
       <ProjectReference Include="..\MadWorld.Blazor.Tools.Application\MadWorld.Blazor.Tools.Application.csproj" />
       <ProjectReference Include="..\MadWorld.Blazor.Tools.Domain\MadWorld.Blazor.Tools.Domain.csproj" />
+      <ProjectReference Include="..\MadWorld.Monaco\MadWorld.Monaco.csproj" />
     </ItemGroup>
 
 </Project>

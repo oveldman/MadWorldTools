@@ -348,3 +348,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# MadWorld exlude folders
+/MadWorld/MadWorld.Monaco/wwwroot/lib/**
