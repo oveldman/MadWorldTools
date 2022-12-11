@@ -28,4 +28,9 @@ public partial class MonacoEditor
         
         await base.OnInitializedAsync();
     }
+    
+    public async Task SetBody(string body)
+    {
+        await MonacoJsInterop.SetBody(body);
+    }
 }
