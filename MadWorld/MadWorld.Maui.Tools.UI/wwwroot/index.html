@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link href="css/app.css" rel="stylesheet" />
     <link href="MadWorld.Maui.Tools.UI.styles.css" rel="stylesheet" />
+    <link href="_content/MadWorld.Monaco/lib/monaco/min/vs/editor/editor.main.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -24,6 +25,9 @@
 
     <script src="_framework/blazor.webview.js" autostart="false"></script>
 
+    <script type="text/javascript" src="_content/MadWorld.Monaco/lib/monaco/min/vs/loader.js"></script>
+    <script>require.config({ paths: { 'vs': '_content/MadWorld.Monaco/lib/monaco/min/vs' } });</script>
+    <script src="_content/MadWorld.Monaco/lib/monaco/min/vs/editor/editor.main.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using MadWorld.Maui.Tools.UI.Data;
+using MadWorld.Monaco.Application;
 
 namespace MadWorld.Maui.Tools.UI;
 
@@ -20,6 +21,8 @@ public static class MauiProgram
 #endif
 
         builder.Services.AddSingleton<WeatherForecastService>();
+        
+        builder.Services.AddMonacoEditor();
 
         return builder.Build();
     }
