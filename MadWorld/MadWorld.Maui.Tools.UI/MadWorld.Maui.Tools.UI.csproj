@@ -55,6 +55,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\MadWorld.Frontend.Shared.Tools.UI\MadWorld.Frontend.Shared.Tools.UI.csproj" />
       <ProjectReference Include="..\MadWorld.Maui.Tools.Application\MadWorld.Maui.Tools.Application.csproj" />
       <ProjectReference Include="..\MadWorld.Maui.Tools.Domain\MadWorld.Maui.Tools.Domain.csproj" />
     </ItemGroup>
