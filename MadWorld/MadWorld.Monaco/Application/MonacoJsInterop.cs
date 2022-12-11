@@ -22,10 +22,12 @@ public class MonacoJsInterop : IMonacoJsInterop, IAsyncDisposable
 
     public async ValueTask Init(Action<MonacoSettings> settings, string body)
     {
+        Console.WriteLine("Test");
         MonacoSettings monacoSettings = new();
         settings.Invoke(monacoSettings);
         
         var module = await moduleTask.Value;
+        Console.WriteLine("Test2:" + monacoSettings.ContainerId);
         await module.InvokeVoidAsync("init", monacoSettings.ContainerId, body, monacoSettings.Language);
     }
 

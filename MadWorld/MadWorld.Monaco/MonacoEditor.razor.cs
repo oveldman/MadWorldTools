@@ -16,7 +16,7 @@ public partial class MonacoEditor
     
     [Inject] private IMonacoJsInterop MonacoJsInterop { get; set; } = null!;
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await MonacoJsInterop.Init(settings =>
             {
@@ -24,11 +24,11 @@ public partial class MonacoEditor
                 settings.Language = SoftwareLanguage;
             },
             _editorBody
-            );
-        
-        await base.OnInitializedAsync();
+        );
+
+        await base.OnAfterRenderAsync(firstRender);
     }
-    
+
     public async Task SetBody(string body)
     {
         await MonacoJsInterop.SetBody(body);
