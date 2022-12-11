@@ -4,6 +4,7 @@ namespace MadWorld.Monaco.Application;
 
 public interface IMonacoJsInterop
 {
-    ValueTask<string> Init(Action<MonacoSettings> settings, string body);
+    ValueTask Init(Action<MonacoSettings> settings, string body);
+    ValueTask SetBody(string body);
     ValueTask DisposeAsync();
 }

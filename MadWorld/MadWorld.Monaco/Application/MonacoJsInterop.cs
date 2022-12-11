@@ -20,13 +20,19 @@ public class MonacoJsInterop : IMonacoJsInterop, IAsyncDisposable
             "import", "./_content/MadWorld.Monaco/monacoJsInterop.js").AsTask());
     }
 
-    public async ValueTask<string> Init(Action<MonacoSettings> settings, string body)
+    public async ValueTask Init(Action<MonacoSettings> settings, string body)
     {
         MonacoSettings monacoSettings = new();
         settings.Invoke(monacoSettings);
         
         var module = await moduleTask.Value;
-        return await module.InvokeAsync<string>("init", monacoSettings.ContainerId, body, monacoSettings.Language);
+        await module.InvokeVoidAsync("init", monacoSettings.ContainerId, body, monacoSettings.Language);
+    }
+
+    public async ValueTask SetBody(string body)
+    {
+        var module = await moduleTask.Value;
+        await module.InvokeVoidAsync("setBody", body);
     }
 
     public async ValueTask DisposeAsync()

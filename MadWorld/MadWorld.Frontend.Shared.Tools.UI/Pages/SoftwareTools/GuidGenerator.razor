@@ -1,0 +1,36 @@
+@page "/SoftwareTools/GuidGenerator"
+<PageTitle>Guid Generator</PageTitle>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Guid Generator</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="mb-3">
+                <label for="amount-guid" class="form-label">Total amount of Guids</label>
+                <input type="number" class="form-control" min="0" max="10000" id="amount-guid" @bind-value="_amountOfGuids" >
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <MonacoEditor @ref="_editor" SoftwareLanguage="plaintext" HeightPixels="500px" />
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-success" @onclick="async () => await GenerateGuid()">Generate GUID</button>
+        </div>
+    </div>
+</div>
