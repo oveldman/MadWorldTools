@@ -15,6 +15,6 @@ az deployment group create \
 # The response you can use as credentials
 name="credentials_madworldtools"
 role="contributor"
-scope="/subscriptions/[id]/resourceGroups/MadWorldTools/"
+scope="/subscriptions/[id]/resourceGroups/MadWorldTools"
 
 az ad sp create-for-rbac --name $name --role $role --scopes $scope --sdk-auth
