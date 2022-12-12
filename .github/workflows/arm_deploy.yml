@@ -20,5 +20,5 @@ jobs:
               --mode Complete \
               --name deployment-madworld \
               --resource-group MadWorldTools \
-              --template-uri "MadWorld/MadWorld.Deployment/deploy-madworld.json"
+              --template-uri "https://raw.githubusercontent.com/oveldman/MadWorldTools/master/MadWorld/MadWorld.Deployment/deploy-madworld.json"
             echo "Azure resource group deployed"
