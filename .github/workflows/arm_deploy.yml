@@ -1,6 +1,8 @@
-push:
-  branches: [ "main" ]
 name: Deploy ARM Template
+
+on:
+  push:
+    branches: [ "main" ]
 
 jobs:
   build-and-deploy:
