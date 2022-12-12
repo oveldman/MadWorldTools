@@ -12,8 +12,13 @@ jobs:
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-      - uses: azure/arm-deploy@v1
+      - uses: Azure/CLI@v1
         with:
-          resourceGroupName: MadWorldTools
-          template: MadWorld/MadWorld.Deployment/deploy-madworld.json
-          additionalArguments: "--name deployment-madworld --mode Complete"
+          inlineScript: |
+            #!/bin/bash
+            az deployment group create \
+              --mode Complete \
+              --name deployment-madworld \
+              --resource-group MadWorldTools \
+              --template-uri "MadWorld/MadWorld.Deployment/deploy-madworld.json"
+            echo "Azure resource group deployed"
