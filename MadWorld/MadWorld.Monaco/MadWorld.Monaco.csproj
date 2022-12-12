@@ -16,4 +16,10 @@
         <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.175" />
     </ItemGroup>
 
+    <Target Name="_LibraryManagerRestoreContentItems" AfterTargets="LibraryManagerRestore">
+        <ItemGroup>
+            <Content Remove="@(FilesForPackagingFromProject)" />
+            <Content Include="@(FilesForPackagingFromProject)" CopyToPublishDirectory="PreserveNewest" />
+        </ItemGroup>
+    </Target>
 </Project>
