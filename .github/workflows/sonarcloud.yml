@@ -10,15 +10,8 @@ jobs:
     name: Build and analyze
     runs-on: windows-latest
     steps:
-      - name: Setup Dotnet 7
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: | 
-            7.0.x
-      - name: Setup Dotnet Maui Check
-        run: dotnet tool install -g Redth.Net.Maui.Check
       - name: Run Maui-check
-        run: maui-check --ci --fix
+        run: dotnet workload install maui
       - name: Set up JDK 11
         uses: actions/setup-java@v1
         with:
