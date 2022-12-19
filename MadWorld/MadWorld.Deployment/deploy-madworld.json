@@ -116,7 +116,12 @@
         "name": "PremiumP1",
         "tier": "A0"
       },
-      "properties": {}
+      "properties": {
+        "createTenantProperties": {
+          "countryCode": "NL",
+          "displayName": "MadWorldTools B2C"
+        }
+      }
     },
     {
       "type": "Microsoft.Storage/storageAccounts",
