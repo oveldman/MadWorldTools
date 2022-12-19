@@ -37,9 +37,12 @@
         "description": "Name of the tools static site."
       }
     },
-    "b2cDirectories_nlMadWorld_onmicrosoft_com_name": {
+    "b2cDirectories_name": {
+      "type": "string",
       "defaultValue": "nlMadWorld.onmicrosoft.com",
-      "type": "string"
+      "metadata": {
+        "description": "Name of the all applications for B2C"
+      }
     },
     "storageAccounts_madworldblobs_name": {
       "type": "string",
@@ -110,8 +113,8 @@
     {
       "type": "Microsoft.AzureActiveDirectory/b2cDirectories",
       "apiVersion": "2021-04-01",
-      "name": "[parameters('b2cDirectories_nlMadWorld_onmicrosoft_com_name')]",
       "location": "Europe",
+      "name": "[parameters('b2cDirectories_name')]",
       "sku": {
         "name": "PremiumP1",
         "tier": "A0"
