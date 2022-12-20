@@ -20,6 +20,11 @@
         "mode": "Incremental",
         "templateLink": {
           "relativePath": "static-website-deploy.json"
+        },
+        "parameters": {
+          "regionLocation": {
+            "value": "[parameters('regionLocation')]"
+          }
         }
       }
     },
@@ -31,6 +36,11 @@
         "mode": "Incremental",
         "templateLink": {
           "relativePath": "blobs-deploy.json"
+        },
+        "parameters": {
+          "regionLocation": {
+            "value": "[parameters('regionLocation')]"
+          }
         }
       }
     }
