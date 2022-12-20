@@ -4,37 +4,8 @@
   "parameters": {
     "regionLocation": {
       "type": "string",
-      "defaultValue": "[resourceGroup().location]",
       "metadata": {
         "description": "Location for all resources."
-      }
-    },
-    "sku": {
-      "type": "string",
-      "defaultValue": "Free",
-      "metadata": {
-        "description": "Adjust sku level"
-      }
-    },
-    "skuCode": {
-      "type": "string",
-      "defaultValue": "Free",
-      "metadata": {
-        "description": "Adjust sku code level"
-      }
-    },
-    "staticSites_admin_name": {
-      "type": "string",
-      "defaultValue": "WebApp-MadWorld-Admin",
-      "metadata": {
-        "description": "Name of the admin static site."
-      }
-    },
-    "staticSites_tools_name": {
-      "type": "string",
-      "defaultValue": "WebApp-MadWorld-Tools",
-      "metadata": {
-        "description": "Name of the tools static site."
       }
     },
     "storageAccounts_madworldblobs_name": {
@@ -47,62 +18,6 @@
   },
   "variables": {},
   "resources": [
-    {
-      "type": "Microsoft.Web/staticSites",
-      "apiVersion": "2022-03-01",
-      "name": "[parameters('staticSites_tools_name')]",
-      "location": "[parameters('regionLocation')]",
-      "sku": {
-        "Tier": "[parameters('sku')]",
-        "Name": "[parameters('skuCode')]"
-      },
-      "properties": {
-        "repositoryUrl": "https://github.com/oveldman/MadWorldTools",
-        "branch": "main",
-        "stagingEnvironmentPolicy": "Enabled",
-        "allowConfigFileUpdates": true,
-        "provider": "GitHub",
-        "enterpriseGradeCdnStatus": "Disabled"
-      }
-    },
-    {
-      "type": "Microsoft.Web/staticSites/customDomains",
-      "apiVersion": "2022-03-01",
-      "name": "[concat(parameters('staticSites_tools_name'), '/www.mad-world.nl')]",
-      "location": "West Europe",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/staticSites', parameters('staticSites_tools_name'))]"
-      ],
-      "properties": {}
-    },
-    {
-      "type": "Microsoft.Web/staticSites",
-      "apiVersion": "2022-03-01",
-      "name": "[parameters('staticSites_admin_name')]",
-      "location": "[parameters('regionLocation')]",
-      "sku": {
-        "Tier": "[parameters('sku')]",
-        "Name": "[parameters('skuCode')]"
-      },
-      "properties": {
-        "repositoryUrl": "https://github.com/oveldman/MadWorldTools",
-        "branch": "main",
-        "stagingEnvironmentPolicy": "Enabled",
-        "allowConfigFileUpdates": true,
-        "provider": "GitHub",
-        "enterpriseGradeCdnStatus": "Disabled"
-      }
-    },
-    {
-      "type": "Microsoft.Web/staticSites/customDomains",
-      "apiVersion": "2022-03-01",
-      "name": "[concat(parameters('staticSites_admin_name'), '/admin.mad-world.nl')]",
-      "location": "West Europe",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/staticSites', parameters('staticSites_admin_name'))]"
-      ],
-      "properties": {}
-    },
     {
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2022-05-01",
@@ -208,5 +123,6 @@
       }
     }
   ],
-  "outputs": {}
+  "outputs": {
+  }
 }
