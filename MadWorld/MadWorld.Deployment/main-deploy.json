@@ -26,8 +26,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "relativePath": "static-website-deploy.json",
-          "uri": "[parameters('baseUrl')]"
+          "uri": "[concat(parameters('baseUrl'), '/static-website-deploy.json')]"
         },
         "parameters": {
           "regionLocation": {
@@ -43,8 +42,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "relativePath": "blobs-deploy.json",
-          "uri": "[parameters('baseUrl')]"
+          "uri": "[concat(parameters('baseUrl'), '/blobs-deploy.json')]"
         },
         "parameters": {
           "regionLocation": {
