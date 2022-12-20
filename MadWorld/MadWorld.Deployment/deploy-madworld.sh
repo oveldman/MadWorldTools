@@ -10,7 +10,7 @@ az deployment group create \
   --mode Complete \
   --name deployment-madworld \
   --resource-group $resourceGroupName \
-  --template-uri "https://raw.githubusercontent.com/oveldman/MadWorldTools/master/MadWorld/MadWorld.Deployment/deploy-madworld.json"
+  --template-uri "https://raw.githubusercontent.com/oveldman/MadWorldTools/master/MadWorld/MadWorld.Deployment/main-deploy.json"
 # End Section 1  
 
 # Create credentials to deploy with ARM
