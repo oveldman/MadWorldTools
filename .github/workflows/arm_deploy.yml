@@ -15,5 +15,5 @@ jobs:
       - uses: azure/arm-deploy@v1
         with:
           resourceGroupName: MadWorldTools
-          template: MadWorld/MadWorld.Deployment/deploy-madworld.json
+          template: MadWorld/MadWorld.Deployment/main-deploy.json
           additionalArguments: "--name deployment-madworld --mode Complete"
