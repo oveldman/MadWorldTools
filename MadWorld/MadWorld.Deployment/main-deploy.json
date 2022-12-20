@@ -9,7 +9,6 @@
       "apiVersion": "2021-04-01",
       "name": "MainDeployment",
       "properties": {
-        "mode": "Complete",
         "templateLink": {
           "relativePath": "deploy-madworld.json"
         }
