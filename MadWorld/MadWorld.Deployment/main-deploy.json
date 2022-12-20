@@ -9,6 +9,7 @@
       "apiVersion": "2021-04-01",
       "name": "MainDeployment",
       "properties": {
+        "mode": "Incremental",
         "templateLink": {
           "relativePath": "deploy-madworld.json"
         }
