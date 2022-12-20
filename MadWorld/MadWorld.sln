@@ -114,10 +114,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InfrastructureAsCode", "InfrastructureAsCode", "{295CCBB7-5A47-45B9-A8A6-A4AE4CDED452}"
 	ProjectSection(SolutionItems) = preProject
-		MadWorld.Deployment\deploy-madworld.json = MadWorld.Deployment\deploy-madworld.json
 		MadWorld.Deployment\deploy-madworld.sh = MadWorld.Deployment\deploy-madworld.sh
 		MadWorld.Deployment\README.md = MadWorld.Deployment\README.md
 		MadWorld.Deployment\main-deploy.json = MadWorld.Deployment\main-deploy.json
+		MadWorld.Deployment\blobs-deploy.json = MadWorld.Deployment\blobs-deploy.json
+		MadWorld.Deployment\static-website-deploy.json = MadWorld.Deployment\static-website-deploy.json
+		MadWorld.Deployment\default-deploy.json = MadWorld.Deployment\default-deploy.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{9BA031FB-EB44-460D-8A55-4F077C3A27B1}"
