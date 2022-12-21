@@ -19,5 +19,5 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript:
-            az staticwebapp environment delete --environment-name "$PR_NUMBER" --name WebApp-MadWorld-Admin
-            az staticwebapp environment delete --environment-name "$PR_NUMBER" --name WebApp-MadWorld-Tools
+            az staticwebapp environment delete --environment-name "${{ env.PR_NUMBER }}" --name WebApp-MadWorld-Admin
+            az staticwebapp environment delete --environment-name "${{ env.PR_NUMBER }}" --name WebApp-MadWorld-Tools
