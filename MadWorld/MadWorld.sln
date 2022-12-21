@@ -110,6 +110,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{
 		..\.github\workflows\azure-staticwebapp-tools.yml = ..\.github\workflows\azure-staticwebapp-tools.yml
 		..\.github\workflows\azure-staticwebapp-admin.yml = ..\.github\workflows\azure-staticwebapp-admin.yml
 		..\.github\workflows\arm_deploy.yml = ..\.github\workflows\arm_deploy.yml
+		..\.github\workflows\azure-staticwebapp-delete-previews.yml = ..\.github\workflows\azure-staticwebapp-delete-previews.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InfrastructureAsCode", "InfrastructureAsCode", "{295CCBB7-5A47-45B9-A8A6-A4AE4CDED452}"

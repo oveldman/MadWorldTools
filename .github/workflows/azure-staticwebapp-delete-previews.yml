@@ -1,0 +1,23 @@
+name: Delete all preview environments at Azure
+
+on:
+  push:
+    branches: [ "main" ]
+    
+env:
+  PR_NUMBER: ${{ github.event.number }}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Delete all preview environments
+        uses: azure/CLI@v1
+        with:
+          inlineScript:
+            az staticwebapp environment delete --environment-name "$PR_NUMBER" --name WebApp-MadWorld-Admin
+            az staticwebapp environment delete --environment-name "$PR_NUMBER" --name WebApp-MadWorld-Tools
