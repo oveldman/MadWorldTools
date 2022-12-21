@@ -3,6 +3,8 @@ name: Deploy ARM Template
 on:
   push:
     branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build-and-deploy:
@@ -13,7 +15,16 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - uses: azure/arm-deploy@v1
+        if: github.event_name == 'push'
+        with:
+         resourceGroupName: MadWorldTools
+         template: MadWorld/MadWorld.Deployment/main-deploy.json
+         deploymentMode: Complete
+         additionalArguments: "--name deployment-madworld"
+      - uses: azure/arm-deploy@v1
+        if: github.event_name == 'pull_request'
         with:
           resourceGroupName: MadWorldTools
           template: MadWorld/MadWorld.Deployment/main-deploy.json
-          additionalArguments: "--name deployment-madworld --mode Complete"
+          deploymentMode: Validate
+          additionalArguments: "--name deployment-madworld"
