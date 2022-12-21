@@ -3,6 +3,8 @@ name: Delete all preview environments at Azure
 on:
   push:
     branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build-and-deploy:
