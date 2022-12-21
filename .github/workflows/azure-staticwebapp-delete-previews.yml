@@ -16,8 +16,8 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Delete all preview environments
-        uses: azure/CLI@v1 
+        uses: azure/CLI@v1
         with:
           inlineScript:
-            az staticwebapp environment delete --environment-name "${{ env.PR_NUMBER }}" --name WebApp-MadWorld-Admin
-            az staticwebapp environment delete --environment-name "${{ env.PR_NUMBER }}" --name WebApp-MadWorld-Tools
+            az staticwebapp environment delete --environment-name "${{ env.PR_NUMBER }}" --name WebApp-MadWorld-Admin -y
+            az staticwebapp environment delete --environment-name "${{ env.PR_NUMBER }}" --name WebApp-MadWorld-Tools -y
