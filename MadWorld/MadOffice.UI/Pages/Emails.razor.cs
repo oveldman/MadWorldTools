@@ -14,9 +14,7 @@ public partial class Emails
     private RadzenDataGrid<Person> _personGrid = default!;
     private RenderFragment _deletePersonDialog = default!;
     private RenderFragment _newPersonDialog = default!;
-    private DeletePersonCard _deletePersonCard = default!;
-    private NewPersonCard _newPersonCard = default!;
-    
+
     private string _errorMessage = string.Empty;
 
     private IEnumerable<Person> _persons = new List<Person>();

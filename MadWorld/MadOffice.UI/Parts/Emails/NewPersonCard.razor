@@ -1,7 +1,7 @@
 @using MadOffice.Domain.Emails.Models
 
 <RadzenCard>
-   <RadzenTemplateForm TItem="Person" Data=@_newPerson Submit=@SaveNewPersonAndCloseDialog InvalidSubmit=@OnInvalidSubmitNewPerson>
+   <RadzenTemplateForm TItem="Person" Data=@_newPerson Submit=@SaveNewPersonAndCloseDialog>
        @if (!string.IsNullOrEmpty(_errorMessagePopup))
        {
            <RadzenAlert AlertStyle="AlertStyle.Warning" Variant="Variant.Flat" Shade="Shade.Lighter">

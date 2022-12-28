@@ -20,8 +20,7 @@ public partial class NewPersonCard : ComponentBase
 
     [Parameter] 
     public RenderFragment NewPersonDialog { get; set; } = default!;
-
-    private List<DropdownOption> _emailTypes = new();
+    
     private List<DropdownOption> _newEmailTypes = new();
 
     private string _errorMessagePopup = string.Empty;
@@ -66,9 +65,5 @@ public partial class NewPersonCard : ComponentBase
         _newPerson = new Person();
         DialogService.Close();
         GetEmails(SelectedEmailType);
-    }
-    
-    private void OnInvalidSubmitNewPerson()
-    {
     }
 }

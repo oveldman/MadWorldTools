@@ -44,7 +44,7 @@ public class EmailImporter : IEmailImporter
         }
         
         
-        return (workDocument, (WorksheetPart)workDocument.GetPartById(sheet.Id.Value!));
+        return (workDocument, (WorksheetPart)workDocument.GetPartById(sheet.Id!.Value!));
     }
     
     private static List<MadOfficePerson> ParseWorksheet(WorkbookPart workbookPart, WorksheetPart worksheetPart)

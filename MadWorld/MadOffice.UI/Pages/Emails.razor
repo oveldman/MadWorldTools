@@ -86,11 +86,11 @@
 </RadzenDataGrid>
 
 @{
-    _newPersonDialog = @<NewPersonCard @ref="_newPersonCard" Persons="_persons" NewPersonDialog="_newPersonDialog"
+    _newPersonDialog = @<NewPersonCard Persons="_persons" NewPersonDialog="_newPersonDialog"
                                        GetEmails="GetEmails" SelectedEmailType="_selectedEmailType">
                        </NewPersonCard>;
     
-    _deletePersonDialog = @<DeletePersonCard @ref="_deletePersonCard" GetEmails="GetEmails" 
+    _deletePersonDialog = @<DeletePersonCard GetEmails="GetEmails" 
                                              DeletePersonDialog="_deletePersonDialog"
                                              SelectedEmailType="_selectedEmailType" DeletePerson="_deletePerson">
                           </DeletePersonCard>;
