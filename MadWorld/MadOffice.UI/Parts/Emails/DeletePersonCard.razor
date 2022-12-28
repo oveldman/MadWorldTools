@@ -1,0 +1,15 @@
+<RadzenCard>
+  @if (!string.IsNullOrEmpty(_errorMessagePopup))
+  {
+      <RadzenAlert AlertStyle="AlertStyle.Warning" Variant="Variant.Flat" Shade="Shade.Lighter">
+          @_errorMessagePopup
+      </RadzenAlert>   
+  }
+   <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.P">Email</RadzenText>
+   <RadzenTextBox Class="w-100" @bind-Value="DeletePerson.Email" Disabled="true"/>
+   <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.P">First Name</RadzenText>
+   <RadzenTextBox Class="w-100" @bind-Value="DeletePerson.FirstName" Disabled="true"/>
+   <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.P">Last Name</RadzenText>
+   <RadzenTextBox Class="w-100" @bind-Value="DeletePerson.LastName" Disabled="true"/>
+   <RadzenButton Click="DeletePersonAndCloseDialog" Text="Delete" ButtonStyle="ButtonStyle.Primary"/>
+</RadzenCard>

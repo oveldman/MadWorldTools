@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using MadOffice.UI.Data;
+using MadOffice.UI.Extensions;
 
 namespace MadOffice.UI;
 
@@ -22,7 +22,7 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
-		builder.Services.AddSingleton<WeatherForecastService>();
+		builder.Services.AddMadOfficeServices();
 
 		return builder.Build();
 	}
