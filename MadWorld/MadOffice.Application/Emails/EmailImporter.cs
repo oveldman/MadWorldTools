@@ -10,7 +10,7 @@ namespace MadOffice.Application.Emails;
 
 public class EmailImporter : IEmailImporter
 {
-        private readonly IEmailReader _emailReader;
+    private readonly IEmailReader _emailReader;
     
     public EmailImporter(IEmailReader emailReader)
     {
@@ -90,7 +90,7 @@ public class EmailImporter : IEmailImporter
         return workbookPart.SharedStringTablePart.SharedStringTable.Elements<SharedStringItem>().ElementAt(id);
     }
     
-    private static readonly Regex ColumnNameRegex = new Regex("[A-Za-z]+");
+    private static readonly Regex ColumnNameRegex = new Regex("[A-Za-z]+", RegexOptions.None,TimeSpan.FromSeconds(1));
     
     private static string GetColumnName(string cellReference)
     {
