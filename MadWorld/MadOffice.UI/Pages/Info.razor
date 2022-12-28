@@ -1,0 +1,18 @@
+@page "/Info"
+
+<div class="container-fluid">
+    <div class="row px-3">
+        <div class="col-md-6 col-lg-4 p-3">
+            <RadzenCard>
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Version</RadzenText>
+                <RadzenTextBox Value="@_version" ReadOnly="true" Class="w-100" />
+            </RadzenCard>
+        </div>
+        <div class="col-md-6 col-lg-4 p-3">
+            <RadzenCard>
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Safe file location</RadzenText>
+                <RadzenTextBox Value="@_defaultFolder" ReadOnly="true" Class="w-100" />
+            </RadzenCard>
+        </div>
+    </div>
+</div>

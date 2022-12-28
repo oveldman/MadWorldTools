@@ -1,0 +1,47 @@
+@page "/EmailImporter"
+@using MadOffice.Domain.Emails.Interfaces
+@using MadOffice.Application.Gui
+
+@if (Succeed)
+{
+    <RadzenAlert AlertStyle="AlertStyle.Success" Variant="Variant.Flat" Shade="Shade.Lighter">
+        Import is complete!
+    </RadzenAlert>   
+}
+
+@if (HasError)
+{
+    <RadzenAlert AlertStyle="AlertStyle.Danger" Variant="Variant.Flat" Shade="Shade.Lighter">
+        There is something wrong with your excel document!
+    </RadzenAlert>   
+}
+
+<div class="container-fluid">
+    <div class="row px-3">
+        <div class="col-lg-6 offset-lg-3 p-3">
+            <RadzenCard>
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.P">Select import email type</RadzenText>
+                <InputSelect class="form-select" @bind-Value="_selectedEmailType">
+                    @foreach (var option in _emailTypes)
+                    {
+                        <option value="@option.Value">@option.Text</option>
+                    }
+                </InputSelect>
+            </RadzenCard>
+        </div>
+    </div>
+    <div class="row px-3">
+        <div class="col-lg-6 offset-lg-3 p-3">
+            <RadzenCard>
+                <h4 class="mb-4">Upload Excel Bestand: "Email, Firstname, Lastname"</h4>
+                <InputFile OnChange="@SingleUpload"/>
+                @if (Uploaded)
+                {
+                    <RadzenButton Click="ProcessExcelFile" ButtonType="ButtonType.Button"
+                                  Text="Start import" ButtonStyle="ButtonStyle.Primary">
+                    </RadzenButton>
+                }
+            </RadzenCard>
+        </div>
+    </div>
+</div>

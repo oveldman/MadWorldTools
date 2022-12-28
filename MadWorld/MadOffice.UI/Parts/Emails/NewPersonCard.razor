@@ -1,0 +1,48 @@
+@using MadOffice.Domain.Emails.Models
+
+<RadzenCard>
+   <RadzenTemplateForm TItem="Person" Data=@_newPerson Submit=@SaveNewPersonAndCloseDialog>
+       @if (!string.IsNullOrEmpty(_errorMessagePopup))
+       {
+           <RadzenAlert AlertStyle="AlertStyle.Warning" Variant="Variant.Flat" Shade="Shade.Lighter">
+               @_errorMessagePopup
+           </RadzenAlert>   
+       }
+       <div class="row mb-5">
+           <div class="col new-person-column">
+               <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.P">Email</RadzenText>
+               <RadzenTextBox Class="w-100" @bind-Value="@_newPerson.Email" Name="Email"/>
+               <RadzenRequiredValidator Component="Email" Text="Email is required" Popup="true" Style="position: absolute"/>
+               <RadzenEmailValidator Component="Email" Text="Provide a valid email address" Popup="true" Style="position: absolute"/>
+           </div>
+       </div>
+       <div class="row mb-5">
+           <div class="col new-person-column">
+             <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.P">First Name</RadzenText>
+             <RadzenTextBox Class="w-100" @bind-Value="@_newPerson.FirstName"/>
+           </div>
+       </div>
+       <div class="row mb-5">
+           <div class="col new-person-column">
+               <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.P">Last Name</RadzenText>
+               <RadzenTextBox Class="w-100" @bind-Value="@_newPerson.LastName"/>                                      
+           </div>
+       </div>
+       <div class="row mb-5">
+           <div class="col new-person-column">
+               <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.P">Email Type</RadzenText>
+                 <InputSelect class="form-select" @bind-Value="_newSelectedEmailType">
+                     @foreach(var option in _newEmailTypes)
+                     {
+                         <option value="@option.Value">@option.Text</option>
+                     }
+                 </InputSelect>                      
+           </div>
+       </div>
+         <div class="row mb-5">
+             <div class="col">
+                 <RadzenButton ButtonType="ButtonType.Submit" Text="Save new person" ButtonStyle="ButtonStyle.Primary"></RadzenButton>
+             </div>
+         </div>
+   </RadzenTemplateForm>
+</RadzenCard>;

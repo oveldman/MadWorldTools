@@ -1,0 +1,97 @@
+@page "/Emails"
+@using MadOffice.Domain.Emails.Models
+@using MadOffice.Application.Gui
+
+@if (!string.IsNullOrEmpty(_errorMessage))
+{
+    <RadzenAlert AlertStyle="AlertStyle.Warning" Variant="Variant.Flat" Shade="Shade.Lighter">
+        @_errorMessage
+    </RadzenAlert>   
+}
+
+<div class="row px-3">
+    <div class="col">
+        <RadzenButton Click="OpenDialogNewPerson" Text="Add new person " ButtonStyle="ButtonStyle.Primary"/>
+    </div>
+    <div class="col">
+        <CopyEmailButton _persons="_persons" />
+        </div>
+    <div class="col">
+        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Email type</RadzenText>
+        <RadzenDropDown AllowClear="false" TValue="DropdownOption" Class="w-100"
+                        Data="_emailTypes" TextProperty="Text" ValueProperty="Value" Value="0 as object"
+                        Change="FilterPersons"/>
+    </div>
+</div>
+
+<RadzenDataGrid @ref="_personGrid" AllowFiltering="_readMode" AllowColumnResize="_readMode" AllowAlternatingRows="false"
+                FilterMode="FilterMode.Simple" AllowSorting="_readMode" PageSize="10" AllowPaging="true" 
+                PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
+                Data="@_persons" TItem="Person" EditMode="DataGridEditMode.Single"
+                LogicalFilterOperator="LogicalFilterOperator.Or" PagerAlwaysVisible="true">
+    <Columns>
+        <RadzenDataGridColumn TItem="Person" Property="Id" Filterable="false" Title="ID" Frozen="true" 
+                              TextAlign="TextAlign.Center" Width="100px" />
+        <RadzenDataGridColumn TItem="Person" Property="FirstName" Title="First Name" Frozen="true">
+            <EditTemplate Context="person">
+                <RadzenTextBox @bind-Value="person.FirstName" Style="width:100%; display: block" Name="First name" />
+            </EditTemplate>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="Person" Property="LastName" Title="Last Name" Frozen="true">
+            <EditTemplate Context="person">
+                <RadzenTextBox @bind-Value="person.LastName" Style="width:100%; display: block" Name="Last name" />
+            </EditTemplate>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="Person" Property="Email" Title="Email" Frozen="true">
+            <EditTemplate Context="person">
+                <RadzenTextBox @bind-Value="person.Email" Style="width:100%; display: block" Name="Email" />
+                <RadzenRequiredValidator @ref="_editRequiredValidator" Component="Email" Text="Email is required" Popup="false" />
+                <RadzenEmailValidator @ref="_editEmailValidator" Component="Email" Text="Provide a valid email address" Popup="false" />
+               <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.P">Email Type</RadzenText>
+                 <InputSelect class="form-select" @bind-Value="person.EmailTypeId">
+                     @foreach(var option in _editEmailTypes)
+                     {
+                         <option value="@option.Value">@option.Text</option>
+                     }
+                 </InputSelect>     
+            </EditTemplate>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="Person" Frozen="true" Sortable="false" Filterable="false" Width="150px"
+                              TextAlign="TextAlign.Center" >
+            <Template Context="person">
+                <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" 
+                              Size="ButtonSize.Medium" Click="@(args => EditRow(person))" 
+                              @onclick:stopPropagation="true">
+                </RadzenButton>
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Variant="Variant.Flat" 
+                              Shade="Shade.Lighter" Size="ButtonSize.Medium" Class="my-1 ms-1" 
+                              Click="@(args => OpenDialogConfirmDelete(person))"  
+                              @onclick:stopPropagation="true">
+                </RadzenButton>
+            </Template>
+            <EditTemplate Context="person">
+                <RadzenButton Icon="check" ButtonStyle="ButtonStyle.Success" Variant="Variant.Flat"
+                              Size="ButtonSize.Medium" Click="@((args) => SaveRow(person))">
+                </RadzenButton>
+                <RadzenButton Icon="close" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat"
+                              Size="ButtonSize.Medium" Class="my-1 ms-1" Click="@((args) => CancelEdit(person))">
+                </RadzenButton>
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Variant="Variant.Flat"
+                              Shade="Shade.Lighter" Size="ButtonSize.Medium" Class="my-1 ms-1"
+                              Click="@(args => OpenDialogConfirmDelete(person))">
+                </RadzenButton>
+            </EditTemplate>
+        </RadzenDataGridColumn>
+    </Columns>
+</RadzenDataGrid>
+
+@{
+    _newPersonDialog = @<NewPersonCard Persons="_persons" NewPersonDialog="_newPersonDialog"
+                                       GetEmails="GetEmails" SelectedEmailType="_selectedEmailType">
+                       </NewPersonCard>;
+    
+    _deletePersonDialog = @<DeletePersonCard GetEmails="GetEmails" 
+                                             DeletePersonDialog="_deletePersonDialog"
+                                             SelectedEmailType="_selectedEmailType" DeletePerson="_deletePerson">
+                          </DeletePersonCard>;
+}
