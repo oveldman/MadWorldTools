@@ -1,5 +1,6 @@
 using MadOffice.Application.Extensions;
 using MadOffice.Application.Gui;
+using MadOffice.Domain.Emails.Exceptions;
 using MadOffice.Domain.Emails.Interfaces;
 using MadOffice.Domain.Emails.Models;
 using Microsoft.AspNetCore.Components;
@@ -9,6 +10,7 @@ namespace MadOffice.UI.Pages;
 
 public partial class EmailImporter
 {
+    private bool HasError { get; set; }
     private bool Succeed { get; set; }
     private bool Uploaded { get; set; }
     private MemoryStream _uploadBody = new();
@@ -45,6 +47,15 @@ public partial class EmailImporter
     private void ProcessExcelFile()
     {
         var emailType = (EmailType)_selectedEmailType;
-        Succeed = Importer.Import(_uploadBody, emailType);
+
+        try
+        {
+            Succeed = Importer.Import(_uploadBody, emailType);
+        }
+        catch (EmailImportException)
+        {
+            HasError = true;
+            Succeed = false;
+        }
     }
 }

@@ -2,6 +2,7 @@ using System.Text.RegularExpressions;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using MadOffice.Application.Extensions;
+using MadOffice.Domain.Emails.Exceptions;
 using MadOffice.Domain.Emails.Interfaces;
 using MadOffice.Domain.Emails.Models;
 using MadOfficePerson = MadOffice.Domain.Emails.Models.Person;
@@ -26,15 +27,27 @@ public class EmailImporter : IEmailImporter
         return _emailReader.Save(persons);
     }
 
-    private (WorkbookPart, WorksheetPart) OpenWorkSheet(MemoryStream file)
+    private static (WorkbookPart, WorksheetPart) OpenWorkSheet(MemoryStream file)
     {
         var package = System.IO.Packaging.Package.Open(file);
         var document = SpreadsheetDocument.Open(package);
-        var sheet = document.WorkbookPart.Workbook.Descendants<Sheet>().First();
-        return (document.WorkbookPart ,(WorksheetPart)document.WorkbookPart.GetPartById(sheet.Id));
+        var workDocument = document.WorkbookPart;
+        if (workDocument == null)
+        {
+            throw new EmailImportException("WorkbookPart not found in this excel file");
+        }
+
+        var sheet = workDocument.Workbook.Descendants<Sheet>().First();
+        if (!sheet.Id?.HasValue ?? true)
+        {
+            throw new EmailImportException("First sheet has no Id in this excel file");
+        }
+        
+        
+        return (workDocument, (WorksheetPart)workDocument.GetPartById(sheet.Id.Value!));
     }
     
-    private List<MadOfficePerson> ParseWorksheet(WorkbookPart workbookPart, WorksheetPart worksheetPart)
+    private static List<MadOfficePerson> ParseWorksheet(WorkbookPart workbookPart, WorksheetPart worksheetPart)
     {
         var worksheet = worksheetPart.Worksheet;
         var rows = worksheet.Descendants<Row>();
@@ -45,18 +58,21 @@ public class EmailImporter : IEmailImporter
             var person = new MadOfficePerson();
             foreach (var cell in cells)
             {
-                var value = GetColumnValue(workbookPart, cell);
-                switch (GetColumnName(cell.CellReference.Value))
+                if (cell.CellReference?.HasValue ?? false)
                 {
-                    case "A":
-                        person.Email = value;
-                        break;
-                    case "B":
-                        person.FirstName = value;
-                        break;
-                    case "C":
-                        person.LastName = value;
-                        break;
+                    var value = GetColumnValue(workbookPart, cell);
+                    switch (GetColumnName(cell.CellReference.Value!))
+                    {
+                        case "A":
+                            person.Email = value;
+                            break;
+                        case "B":
+                            person.FirstName = value;
+                            break;
+                        case "C":
+                            person.LastName = value;
+                            break;
+                    }
                 }
             }
             people.Add(person);
@@ -64,7 +80,7 @@ public class EmailImporter : IEmailImporter
         return people;
     }
 
-    private static string GetColumnValue(WorkbookPart workbookPart, Cell cell)
+    private static string GetColumnValue(WorkbookPart workbookPart, CellType cell)
     {
         if (cell.DataType == null) return string.Empty;
         if (cell.DataType != CellValues.SharedString) return string.Empty;
@@ -72,25 +88,20 @@ public class EmailImporter : IEmailImporter
         
         var item = GetSharedStringItemById(workbookPart, id);
 
-        if (item.Text != null)
-        {
-            return item.Text.Text;
-        }
-                    
-        if (item?.InnerText != null)
-        {
-            return item.InnerText;
-        }
-                    
-        return item?.InnerXml ?? string.Empty;
+        return item.Text != null ? item.Text.Text : item.InnerXml;
     }
     
     private static SharedStringItem GetSharedStringItemById(WorkbookPart workbookPart, int id)
     {
-        return workbookPart.SharedStringTablePart.SharedStringTable.Elements<SharedStringItem>().ElementAt(id);
+        if (workbookPart.SharedStringTablePart == null)
+        {
+            throw new EmailImportException("This workbookPart has no SharedStringTablePart");
+        }
+        
+        return workbookPart.SharedStringTablePart!.SharedStringTable.Elements<SharedStringItem>().ElementAt(id);
     }
     
-    private static readonly Regex ColumnNameRegex = new Regex("[A-Za-z]+", RegexOptions.None,TimeSpan.FromSeconds(1));
+    private static readonly Regex ColumnNameRegex = new("[A-Za-z]+", RegexOptions.None,TimeSpan.FromSeconds(1));
     
     private static string GetColumnName(string cellReference)
     {

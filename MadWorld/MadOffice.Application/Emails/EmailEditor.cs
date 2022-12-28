@@ -6,7 +6,7 @@ namespace MadOffice.Application.Emails;
 
 public class EmailEditor : IEmailEditor
 {
-    private IEmailReader _emailReader;
+    private readonly IEmailReader _emailReader;
     
     public EmailEditor(IEmailReader emailReader)
     {
