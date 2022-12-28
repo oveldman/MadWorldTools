@@ -6,4 +6,13 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="AutoFixture" Version="4.17.0" />
+      <PackageReference Include="AutoFixture.AutoMoq" Version="4.17.0" />
+      <PackageReference Include="AutoFixture.Xunit2" Version="4.17.0" />
+      <PackageReference Include="FluentAssertions" Version="6.8.0" />
+      <PackageReference Include="Moq" Version="4.18.3" />
+      <PackageReference Include="MoqExpression" Version="2.0.0" />
+    </ItemGroup>
+
 </Project>
