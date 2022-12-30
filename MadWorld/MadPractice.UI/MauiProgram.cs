@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
-using MadWorld.Monaco.Application;
 
-namespace MadWorld.Maui.Tools.UI;
+namespace MadPractice.UI;
 
 public static class MauiProgram
 {
@@ -18,8 +17,6 @@ public static class MauiProgram
         builder.Services.AddBlazorWebViewDeveloperTools();
         builder.Logging.AddDebug();
 #endif
-
-        builder.Services.AddMonacoEditor();
 
         return builder.Build();
     }
