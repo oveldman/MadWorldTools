@@ -2,6 +2,18 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "environmentTag": {
+      "type": "string",
+      "metadata": {
+        "description": "Define environment tags for the resources"
+      },
+      "allowedValues": [
+        "development",
+        "test",
+        "uat",
+        "production"
+      ]
+    },
     "regionLocation": {
       "type": "string",
       "metadata": {
@@ -23,6 +35,9 @@
       "apiVersion": "2022-05-01",
       "name": "[parameters('storageAccounts_madworldblobs_name')]",
       "location": "[parameters('regionLocation')]",
+      "tags": {
+        "environment": "[parameters('environmentTag')]"
+      },
       "sku": {
         "name": "Standard_LRS",
         "tier": "Standard"

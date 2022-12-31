@@ -4,10 +4,29 @@
   "parameters": {
     "baseUrl": {
       "type": "string",
-      "defaultValue": "https://raw.githubusercontent.com/oveldman/MadWorldTools/master/MadWorld/MadWorld.Deployment",
+      "defaultValue": "https://raw.githubusercontent.com/oveldman/MadWorldTools",
       "metadata": {
-        "description": "Url to the base folder of the deployment files"
+        "description": "Url to the base folder of the git repository"
       }
+    },
+    "gitBranch": {
+      "type": "string",
+      "defaultValue": "main",
+      "metadata": {
+        "description": "Git branch to use"
+      }
+    },
+    "environmentTag": {
+      "type": "string",
+      "metadata": {
+        "description": "Define environment tags for the resources"
+      },
+      "allowedValues": [
+        "development",
+        "test",
+        "uat",
+        "production"
+      ]
     },
     "regionLocation": {
       "type": "string",
@@ -17,7 +36,9 @@
       }
     }
   },
-  "variables": {},
+  "variables": {
+    "deploymentUrl": "[concat(parameters('baseUrl'), '/', parameters('gitBranch'), '/MadWorld/MadWorld.Deployment')]"
+  },
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
@@ -26,11 +47,14 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('baseUrl'), '/static-website-deploy.json')]"
+          "uri": "[concat(variables('deploymentUrl'), '/static-website-deploy.json')]"
         },
         "parameters": {
           "regionLocation": {
             "value": "[parameters('regionLocation')]"
+          },
+          "environmentTag": {
+            "value": "[parameters('environmentTag')]"
           }
         }
       }
@@ -42,11 +66,14 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('baseUrl'), '/blobs-deploy.json')]"
+          "uri": "[concat(variables('deploymentUrl'), '/blobs-deploy.json')]"
         },
         "parameters": {
           "regionLocation": {
             "value": "[parameters('regionLocation')]"
+          },
+          "environmentTag": {
+            "value": "[parameters('environmentTag')]"
           }
         }
       }
