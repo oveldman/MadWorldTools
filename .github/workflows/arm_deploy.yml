@@ -21,7 +21,8 @@ jobs:
          resourceGroupName: MadWorldTools
          template: MadWorld/MadWorld.Deployment/main-deploy.json
          deploymentMode: Complete
-         additionalArguments: "--name deployment-madworld --parameters gitBranch=${{ github.head_ref || github.ref_name }} environmentTag=production"
+         parameters: gitBranch=${{ github.head_ref || github.ref_name }} environmentTag=production
+         additionalArguments: "--name deployment-madworld"
       - uses: azure/arm-deploy@v1
         name: Validate ARM only
         if: github.event_name == 'pull_request'
@@ -29,4 +30,5 @@ jobs:
           resourceGroupName: MadWorldTools
           template: MadWorld/MadWorld.Deployment/main-deploy.json
           deploymentMode: Validate
-          additionalArguments: "--name deployment-madworld --parameters gitBranch=${{ github.head_ref || github.ref_name }} environmentTag=production"
+          parameters: gitBranch=${{ github.head_ref || github.ref_name }} environmentTag=production
+          additionalArguments: "--name deployment-madworld"
