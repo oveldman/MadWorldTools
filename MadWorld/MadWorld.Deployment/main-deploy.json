@@ -16,6 +16,18 @@
         "description": "Git branch to use"
       }
     },
+    "environmentTag": {
+      "type": "string",
+      "metadata": {
+        "description": "Define environment tags for the resources"
+      },
+      "allowedValues": [
+        "development",
+        "test",
+        "uat",
+        "production"
+      ]
+    },
     "regionLocation": {
       "type": "string",
       "defaultValue": "[resourceGroup().location]",
@@ -40,6 +52,9 @@
         "parameters": {
           "regionLocation": {
             "value": "[parameters('regionLocation')]"
+          },
+          "environmentTag": {
+            "value": "[parameters('environmentTag')]"
           }
         }
       }
@@ -56,6 +71,9 @@
         "parameters": {
           "regionLocation": {
             "value": "[parameters('regionLocation')]"
+          },
+          "environmentTag": {
+            "value": "[parameters('environmentTag')]"
           }
         }
       }
